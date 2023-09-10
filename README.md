@@ -42,6 +42,6 @@ A dedicated or grouped interrupt is triggered, depending on the source of the in
 
 The working principle of the encoder (shown above) is illustrated in the image below. It uses a slotted wheel with a single LED and photodetector pair that generate pulses as the wheel turns, and the speed of an object can be calculated by measuring the pulse duration Δti  (i.e. elapsed time or period of a pulse) between successive pulses [2]. It comprises three connections: GND, VCC and OUT. GND and VCC supply power to the module (in our case, via the MSP432's GND and 3.3V pins), while OUT generates the square-pulse signal.
 
-![Screenshot of Encoders](img\encoder.jpg)
+![Screenshot of Encoders](img/encoder.png)
 
 
