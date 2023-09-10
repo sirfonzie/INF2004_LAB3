@@ -92,8 +92,8 @@ This example [hello_timer.c](https://github.com/raspberrypi/pico-examples/blob/m
    If an object is present within the sensor's detection range, the emitted ultrasonic waves will bounce off that object's surface and reflect back toward the module. The module's ultrasonic receiver, or the "Echo" pin, detects these reflected sound waves. The duration for which the "Echo" pin stays high is directly proportional to the time it takes for the emitted ultrasonic waves to hit an object and return.
 4. **Distance Derivation**:
    The time measured from the emission of the ultrasonic pulse to its reception (the round trip) can be used to derive the distance to the object. Given that we know the speed of sound in air (approximately 343 meters per second or 1125.33 feet per second at room temperature), the formula to calculate this distance is:
-   \[ \text{Distance} = \frac{\text{Time of Echo pulse width} \times \text{Speed of Sound}}{2} \]
-   The division by 2 accounts for the round trip of the sound waves; we need the time for just one way to determine the distance to the object.
+   <img src="img/distance.png" width=50% height=50%>
+   The division by two accounts for the round trip of the sound waves; we need the time for just one way to determine the distance to the object.
 
 This refined operation section offers a step-by-step and structured explanation of how the HC-SR04 ultrasonic sensor functions, from initiating a reading to interpreting the results.
 The following [example](https://github.com/KleistRobotics/Pico-Ultrasonic/blob/main/ultrasonic/ultrasonic.c) uses simple GPIO and delays to achieve the trigger and echo calculation to obtain the distance. However, this code is inefficient due to the use of block-waiting (lines #26 & #28). 
