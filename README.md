@@ -84,6 +84,8 @@ This example [hello_timer.c](https://github.com/raspberrypi/pico-examples/blob/m
 
 ## **HOW DOES THE ULTRASONIC HC-SR04P WORK**
 
+<img src="img/ultrasonic.png" width=50% height=50%>
+
 1. **Initiation**:
    To initiate a measurement, a short high pulse, typically around 10 microseconds in duration, is applied to the "Trigger" pin of the HC-SR04 module. This signal prompts the module to prepare for an ultrasonic detection sequence.
 2. **Ultrasonic Pulse Emission**:
