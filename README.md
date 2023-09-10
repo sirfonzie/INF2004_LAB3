@@ -55,7 +55,7 @@ The working principle of the encoder (shown above) is illustrated in the image b
 
 You may now change the callback function to convert this code into the wheel encoder driver. To measure distance, count each time the notch has been detected (Hint: Use edge-triggered). To measure speed, you will need to measure the pulse width.
 
-<img src="img/connectIRSensor.png" width=50% height=50%>
+<img src="img/connectIRSensor.png" width=70% height=70%>
 
 ## **TIMERS**
 
@@ -98,7 +98,7 @@ This example [hello_timer.c](https://github.com/raspberrypi/pico-examples/blob/m
    The time measured from the emission of the ultrasonic pulse to its reception (the round trip) can be used to derive the distance to the object. Given that we know the speed of sound in air (approximately 343 meters per second or 1125.33 feet per second at room temperature), the formula to calculate this distance is:
    <img src="img/distance.png" width=25% height=25%> The division by two accounts for the round trip of the sound waves; we need the time for just one way to determine the distance to the object.
 
-<img src="img/connectultrasonic.png" width=50% height=50%>
+<img src="img/connectultrasonic.png" width=70% height=70%>
 
 ## **SAMPLE CODE FOR ULTRASONIC HC-SR04P**
 
