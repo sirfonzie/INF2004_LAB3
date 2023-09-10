@@ -44,4 +44,25 @@ The working principle of the encoder (shown above) is illustrated in the image b
 
 ![Screenshot of Encoders](img/encoder.png)
 
+## **TIMERS**
 
+The RP2040 found in the Pico features a flexible timer system that can be used for various applications. Here is a brief description of its timer system, focusing on timer modes, input capture, and output compare:
+
+1. **Timer Modes:**
+    - **Free Running Mode:** In this mode, the timer simply counts from 0 to its maximum value and then wraps around to start counting again.
+    - **Periodic Mode:** In this mode, the timer counts up to a predefined value (ALARM0, for instance) and then restarts from zero. This can be used to generate periodic interrupts or events.
+    - **One-Shot Mode:** In this mode, the timer counts up to a predefined value and then stops. It's useful for creating a single delay or measuring an event of known duration.
+
+2. **Input Capture:**
+    - Input capture is used to measure the time duration of an external event. For example, it can measure the duration of a pulse on a pin.
+    - When the event occurs (like a rising or falling edge on a pin), the current timer value is 'captured' and stored in a register.
+    - By comparing consecutive captured values, you can determine the duration of the event or the period between events.
+    - The RP2040 timer can be configured to generate an interrupt when such capture occurs, which allows the CPU to process the captured value or take action based on the event.
+
+3. **Output Compare:**
+    - Output compare generates an event (like toggling a pin) at a specific timer value.
+    - You set a value in a compare register, and an action can be triggered when the timer counts up to that value.
+    - The action can be as simple as generating an interrupt or as complex as toggling a GPIO pin, generating PWM signals, etc.
+    - This feature can be very useful in applications like motor control, where precise timing of events is crucial.
+
+It's also worth noting that the RP2040 timer system provides multiple alarm (compare) registers, allowing multiple compare values to be active simultaneously. This multi-alarm capability can be particularly useful in applications requiring various events to happen simultaneously without constant CPU intervention. To make full use of the timer capabilities, you should take a look at the RP2040 datasheet and SDK, which will provide more detailed information and examples on how to configure and use the timers.
