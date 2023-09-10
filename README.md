@@ -53,7 +53,7 @@ The working principle of the encoder (shown above) is illustrated in the image b
 
 <img src="img/encoder.png" width=50% height=50%>
 
-You may now change the callback function to convert this code into the wheel encoder driver. To measure distance, count each time the notch has been detected (Hint: Use edge-triggered). To measure speed, you will need to measure the pulse-width.
+You may now change the callback function to convert this code into the wheel encoder driver. To measure distance, count each time the notch has been detected (Hint: Use edge-triggered). To measure speed, you will need to measure the pulse width.
 
 ## **TIMERS**
 
@@ -62,7 +62,7 @@ The RP2040 found in the Pico features a flexible timer system that can be used f
 1. **Timer Modes:**
     - **Free Running Mode:** In this mode, the timer simply counts from 0 to its maximum value and then wraps around to start counting again.
     - **Periodic Mode:** In this mode, the timer counts up to a predefined value (ALARM0, for instance) and then restarts from zero. This can be used to generate periodic interrupts or events.
-    - **One-Shot Mode:** In this mode, the timer counts up to a predefined value and then stops. It's useful for creating a single delay or measuring an event of known duration.
+    - **One-Shot Mode:** In this mode, the timer counts up to a predefined value and then stops. It's useful for creating a single delay or measuring an event of a known duration.
 
 2. **Input Capture:**
     - Input capture is used to measure the time duration of an external event. For example, it can measure the duration of a pulse on a pin.
@@ -77,3 +77,27 @@ The RP2040 found in the Pico features a flexible timer system that can be used f
     - This feature can be very useful in applications like motor control, where precise timing of events is crucial.
 
 It's also worth noting that the RP2040 timer system provides multiple alarm (compare) registers, allowing multiple compare values to be active simultaneously. This multi-alarm capability can be particularly useful in applications requiring various events to happen simultaneously without constant CPU intervention. To make full use of the timer capabilities, you should take a look at the RP2040 datasheet and SDK, which will provide more detailed information and examples on how to configure and use the timers.
+
+## **Periodic vs Single-shot**
+
+This example [hello_timer.c](https://github.com/raspberrypi/pico-examples/blob/master/timer/hello_timer/hello_timer.c) illustrates how to configure a single-shot and a periodic-based timer that is used to trigger an interrupt. This interrupt will then trigger a function to perform the user-defined code. Changing the `delay_ms` parameter in the `add_repeating_timer_ms` API call can trigger different behaviours. Observe the starting time at each call.
+
+## **ULTRASONIC HC-SR04P**
+
+Of course, let's delve deeper into the **Operation** section of the HC-SR04 ultrasonic sensor and provide a more detailed and refined explanation:
+
+### HC-SR04 Operation:
+
+1. **Initiation**:
+   To initiate a measurement, a short high pulse, typically around 10 microseconds in duration, is applied to the "Trigger" pin of the HC-SR04 module. This signal prompts the module to prepare for an ultrasonic detection sequence.
+2. **Ultrasonic Pulse Emission**:
+   Once triggered, the HC-SR04 responds by emitting a burst of eight ultrasonic pulses at approximately 40 kHz. These sound waves travel through the air, radiating outward from the module's transmitter.
+3. **Reflection and Reception**:
+   If an object is present within the sensor's detection range, the emitted ultrasonic waves will bounce off that object's surface and reflect back toward the module. The module's ultrasonic receiver, or the "Echo" pin, detects these reflected sound waves. The duration for which the "Echo" pin stays high is directly proportional to the time it takes for the emitted ultrasonic waves to hit an object and return.
+4. **Distance Derivation**:
+   The time measured from the emission of the ultrasonic pulse to its reception (the round trip) can be used to derive the distance to the object. Given that we know the speed of sound in air (approximately 343 meters per second or 1125.33 feet per second at room temperature), the formula to calculate this distance is:
+   \[ \text{Distance} = \frac{\text{Time of Echo pulse width} \times \text{Speed of Sound}}{2} \]
+   The division by 2 accounts for the round trip of the sound waves; we need the time for just one way to determine the distance to the object.
+
+This refined operation section offers a step-by-step and structured explanation of how the HC-SR04 ultrasonic sensor functions, from initiating a reading to interpreting the results.
+The following [example](https://github.com/KleistRobotics/Pico-Ultrasonic/blob/main/ultrasonic/ultrasonic.c) uses simple GPIO and delays to achieve the trigger and echo calculation to obtain the distance. However, this code is inefficient due to the use of block-waiting (lines #26 & #28). 
