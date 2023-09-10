@@ -53,7 +53,7 @@ The working principle of the encoder (shown above) is illustrated in the image b
 
 <img src="img/encoder.png" width=50% height=50%>
 
-
+You may now change the callback function to convert this code into the wheel encoder driver. To measure distance, count each time the notch has been detected (Hint: Use edge-triggered). To measure speed, you will need to measure the pulse-width.
 
 ## **TIMERS**
 
