@@ -32,7 +32,7 @@ While polling is a simple way to check for state changes, there's a cost. If the
 
 An alternative is configuring an interrupt on the button's GPIO pin so that an interrupt is generated when a pre-configured trigger condition is met. With this approach, the microprocessor can enter a low-power sleep state and be woken up with the interrupt. The Pico can detect signal changes (e.g. rising or falling edges) to generate an interrupt. If a GPIO pin is configured to be pulled up, a falling edge will occur when the button is pressed, pulling the pin to the ground. Interrupts are thus better suited to handle asynchronous events.
 
-![Screenshot of polling](https://www.renesas.com/sites/default/files/inline-images/fig1-interrupts-vs-polling-en.jpg)
+<img src="https://www.renesas.com/sites/default/files/inline-images/fig1-interrupts-vs-polling-en.jpg" width=80% height=80%>
 
 A dedicated or grouped interrupt is triggered, depending on the source of the interrupt. For peripherals like GPIO ports, multiple pins could produce the same interrupt. In these cases, it is necessary to query the pin's interrupt vector register to identify the interrupt's exact source. Typically, this is done inside the ISR. Once an ISR identifies the source of the interrupt, it can react accordingly. Typically, ISRs execute in a privileged mode that can mask other interrupts. Hence, ISR should be as short as possible and only set application-specific flags to indicate to the microprocessor's main thread to execute the corresponding task in response to an interrupt.
 
@@ -40,16 +40,20 @@ A dedicated or grouped interrupt is triggered, depending on the source of the in
 
 We will be exploring the [hello_gpio_irq.c](https://github.com/raspberrypi/pico-examples/blob/master/gpio/hello_gpio_irq/hello_gpio_irq.c) sample code designed for the Pico W. In this session, we'll merge our knowledge of GPIO with the concept of interrupts. Instead of the previous lab's approach, where we continuously polled the GPIO pin status using the `while(true)` statement, we'll now integrate interrupts. This will allow us to trigger the interrupts based on the desired state, whether edge-triggered or level-triggered. In this example, edge-triggered has been chosen. How would you change it to level-triggered? 
 
+To test the code, you must connect the GP02 pin to 3.3V while observing the output on the Serial Monitor. In the [CMakeLists.txt](https://github.com/raspberrypi/pico-examples/blob/master/gpio/hello_gpio_irq/CMakeLists.txt), __ensure__ that the following line has been added `pico_enable_stdio_usb(hello_gpio_irq 1)`.
+
 > [NOTE]
 > Switching to trigger at a low-level (GPIO_IRQ_LEVEL_LOW) could lead to the software crashing (not working). Why?
 
 ## **IR-BASED WHEEL ENCODER**
- 
-![Screenshot of HC-020K Photoelectric encoders](https://rees52-fbcb.kxcdn.com/19851-thickbox_default/hc-020k-double-speed-measuring-module-with-photoelectric-encoders-for-experiment-rs019.jpg | width=100)
 
-The working principle of the encoder (shown above) is illustrated in the image below. It uses a slotted wheel with a single LED and photodetector pair that generate pulses as the wheel turns, and the speed of an object can be calculated by measuring the pulse duration Δti  (i.e. elapsed time or period of a pulse) between successive pulses [2]. It comprises three connections: GND, VCC and OUT. GND and VCC supply power to the module (in our case, via the MSP432's GND and 3.3V pins), while OUT generates the square-pulse signal.
+<img src="https://rees52-fbcb.kxcdn.com/19851-thickbox_default/hc-020k-double-speed-measuring-module-with-photoelectric-encoders-for-experiment-rs019.jpg" width=50% height=50%>
 
-![Screenshot of Encoders](img/encoder.png)
+The working principle of the encoder (shown above) is illustrated in the image below. It uses a slotted wheel with a single LED and photodetector pair that generate pulses as the wheel turns, and the speed of an object can be calculated by measuring the pulse duration Δti  (i.e. elapsed time or period of a pulse) between successive pulses. It comprises three connections: GND, VCC and OUT. GND and VCC supply power to the module (in our case, via the Pico's GND and 3.3V pins), while OUT generates the square-pulse signal. Connecting the GP02 from the Pico to the OUT of the IR-Sensor will allow the Pico to detect when the wheel is turning.
+
+<img src="img/encoder.png" width=50% height=50%>
+
+
 
 ## **TIMERS**
 
