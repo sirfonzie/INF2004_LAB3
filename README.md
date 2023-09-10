@@ -32,5 +32,8 @@ While polling is a simple way to check for state changes, there's a cost. If the
 
 An alternative is to configure an interrupt on the button's GPIO pin such that when a pre-configured trigger condition is met, an interrupt is generated. With this approach, the microprocessor can enter a low-power sleep state and be woken up with the interrupt. The MSP432 can detect signal changes (e.g. rising or falling edges) to generate an interrupt, as shown in Figure 1 (top). If a GPIO pin is configured to be pulled up, a falling edge will occur when the button is pressed, pulling the pin to the ground. Interrupts are thus better suited to handle asynchronous events.
 
-![Screenshot of polling](img/polling.png)
+![Screenshot of polling](https://www.renesas.com/sites/default/files/inline-images/fig1-interrupts-vs-polling-en.jpg)
+
+A dedicated or grouped interrupt is triggered, depending on the source of the interrupt. For peripherals like GPIO ports, multiple pins could produce the same interrupt. In these cases, it is necessary to query the pin's interrupt vector register to identify the interrupt's exact source. Typically, this is done inside the ISR. Once an ISR identifies the source of the interrupt, it can react accordingly. Typically, ISRs execute in a privileged mode that can mask other interrupts. Hence, ISR should be as short as possible and only set application-specific flags to indicate to the microprocessor's main thread to execute the corresponding task in response to an interrupt.
+
 
