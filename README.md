@@ -82,7 +82,7 @@ It's also worth noting that the RP2040 timer system provides multiple alarm (com
 
 This example [hello_timer.c](https://github.com/raspberrypi/pico-examples/blob/master/timer/hello_timer/hello_timer.c) illustrates how to configure a single-shot and a periodic-based timer that is used to trigger an interrupt. This interrupt will then trigger a function to perform the user-defined code. Changing the `delay_ms` parameter in the `add_repeating_timer_ms` API call can trigger different behaviours. Observe the starting time at each call.
 
-## **ULTRASONIC HC-SR04P**
+## **HOW DOES THE ULTRASONIC HC-SR04P WORK**
 
 1. **Initiation**:
    To initiate a measurement, a short high pulse, typically around 10 microseconds in duration, is applied to the "Trigger" pin of the HC-SR04 module. This signal prompts the module to prepare for an ultrasonic detection sequence.
@@ -94,5 +94,6 @@ This example [hello_timer.c](https://github.com/raspberrypi/pico-examples/blob/m
    The time measured from the emission of the ultrasonic pulse to its reception (the round trip) can be used to derive the distance to the object. Given that we know the speed of sound in air (approximately 343 meters per second or 1125.33 feet per second at room temperature), the formula to calculate this distance is:
    <img src="img/distance.png" width=25% height=25%> The division by two accounts for the round trip of the sound waves; we need the time for just one way to determine the distance to the object.
 
-This refined operation section offers a step-by-step and structured explanation of how the HC-SR04 ultrasonic sensor functions, from initiating a reading to interpreting the results.
+## **SAMPLE CODE FOR ULTRASONIC HC-SR04P**
+
 The following [example](https://github.com/KleistRobotics/Pico-Ultrasonic/blob/main/ultrasonic/ultrasonic.c) uses simple GPIO and delays to achieve the trigger and echo calculation to obtain the distance. However, this code is inefficient due to the use of block-waiting (lines #26 & #28). 
