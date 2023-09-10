@@ -36,6 +36,13 @@ An alternative is configuring an interrupt on the button's GPIO pin so that an i
 
 A dedicated or grouped interrupt is triggered, depending on the source of the interrupt. For peripherals like GPIO ports, multiple pins could produce the same interrupt. In these cases, it is necessary to query the pin's interrupt vector register to identify the interrupt's exact source. Typically, this is done inside the ISR. Once an ISR identifies the source of the interrupt, it can react accordingly. Typically, ISRs execute in a privileged mode that can mask other interrupts. Hence, ISR should be as short as possible and only set application-specific flags to indicate to the microprocessor's main thread to execute the corresponding task in response to an interrupt.
 
+## **GPIO INTERRUPT REQUEST**
+
+We will be exploring the [hello_gpio_irq.c](https://github.com/raspberrypi/pico-examples/blob/master/gpio/hello_gpio_irq/hello_gpio_irq.c) sample code designed for the Pico W. In this session, we'll merge our knowledge of GPIO with the concept of interrupts. Instead of the previous lab's approach, where we continuously polled the GPIO pin status using the `while(true)` statement, we'll now integrate interrupts. This will allow us to trigger the interrupts based on the desired state, whether edge-triggered or level-triggered. In this example, edge-triggered has been chosen. How would you change it to level-triggered? 
+
+> [NOTE]
+> Switching to trigger at a low-level (GPIO_IRQ_LEVEL_LOW) could lead to the software crashing (not working). Why?
+
 ## **IR-BASED WHEEL ENCODER**
  
 ![Screenshot of HC-020K Photoelectric encoders](https://rees52-fbcb.kxcdn.com/19851-thickbox_default/hc-020k-double-speed-measuring-module-with-photoelectric-encoders-for-experiment-rs019.jpg)
