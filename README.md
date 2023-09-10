@@ -88,18 +88,18 @@ This example [hello_timer.c](https://github.com/raspberrypi/pico-examples/blob/m
 
 <img src="img/ultrasonic.png" width=50% height=50%>
 
-1. **Initiation**:
-   To initiate a measurement, a short high pulse, typically around 10 microseconds in duration, is applied to the "Trigger" pin of the HC-SR04 module. This signal prompts the module to prepare for an ultrasonic detection sequence.
-2. **Ultrasonic Pulse Emission**:
-   Once triggered, the HC-SR04 responds by emitting a burst of eight ultrasonic pulses at approximately 40 kHz. These sound waves travel through the air, radiating outward from the module's transmitter.
-3. **Reflection and Reception**:
-   If an object is present within the sensor's detection range, the emitted ultrasonic waves will bounce off that object's surface and reflect back toward the module. The module's ultrasonic receiver, or the "Echo" pin, detects these reflected sound waves. The duration for which the "Echo" pin stays high is directly proportional to the time it takes for the emitted ultrasonic waves to hit an object and return.
-4. **Distance Derivation**:
-   The time measured from the emission of the ultrasonic pulse to its reception (the round trip) can be used to derive the distance to the object. Given that we know the speed of sound in air (approximately 343 meters per second or 1125.33 feet per second at room temperature), the formula to calculate this distance is:
-   <img src="img/distance.png" width=25% height=25%> The division by two accounts for the round trip of the sound waves; we need the time for just one way to determine the distance to the object.
+1. **Initiation**: A short high pulse, typically around 10 microseconds in duration, is applied to the "Trigger" pin of the HC-SR04 module to initiate a measurement.
+2. **Ultrasonic Pulse Emission**: Once triggered, the HC-SR04 responds by emitting a burst of eight ultrasonic pulses at approximately 40 kHz. These sound waves travel through the air, radiating outward from the module's transmitter.
+3. **Reflection and Reception**: If an object is present within the sensor's detection range, the emitted ultrasonic waves will bounce off that object's surface and reflect toward the module. The module's ultrasonic receiver, or the "Echo" pin, detects these reflected sound waves. The duration for which the "Echo" pin stays high is directly proportional to the time it takes for the emitted ultrasonic waves to hit an object and return.
+4. **Distance Derivation**: The time measured from the emission of the ultrasonic pulse to its reception (the round trip) can be used to derive the distance to the object. Given that, we know the speed of sound in air (approximately 343 meters per second or 1125.33 feet per second at room temperature), the formula to calculate this distance is: <img src="img/distance.png" width=25% height=25%> The division by two accounts for the round trip of the sound waves; we need the time for just one way to determine the distance to the object.
 
 <img src="img/connectultrasonic.png" width=70% height=70%>
 
 ## **SAMPLE CODE FOR ULTRASONIC HC-SR04P**
 
 The following [example](https://github.com/KleistRobotics/Pico-Ultrasonic/blob/main/ultrasonic/ultrasonic.c) uses simple GPIO and delays to achieve the trigger and echo calculation to obtain the distance. However, this code is inefficient due to the use of block-waiting (lines #26 & #28). 
+
+
+## **EXERCISE**
+
+To develop a simple stopwatch that measures time intervals between button presses. On pressing the **START** pseudo-button (GP15), the stopwatch will begin, and the elapsed time will be displayed every second on the Serial Monitor (or equivalent). Releasing the **START** pseudo-button will stop the timer and reset the elapsed time to zero. The **START** pseudo-button must incorporate a debouncing algorithm.
