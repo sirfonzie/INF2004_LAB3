@@ -102,4 +102,4 @@ The following [example](https://github.com/KleistRobotics/Pico-Ultrasonic/blob/m
 
 ## **EXERCISE**
 
-To develop a simple stopwatch that measures time intervals between button presses. On pressing the **START** pseudo-button (GP15), the stopwatch will begin, and the elapsed time will be displayed every second on the Serial Monitor (or equivalent). Releasing the **START** pseudo-button will stop the timer and reset the elapsed time to zero. The **START** pseudo-button must incorporate a debouncing algorithm.
+To develop a simple stopwatch that measures time intervals between button presses. On pressing the **START** pseudo-button (GP15), the stopwatch will begin, and the elapsed time will be displayed every second on the Serial Monitor (or equivalent). Releasing the **START** pseudo-button will stop the timer and reset the elapsed time to zero. The **START** pseudo-button must incorporate a debouncing algorithm. Please note that GPIO and Timer interrupts must be incorporated into this solution.
