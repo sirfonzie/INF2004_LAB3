@@ -84,6 +84,9 @@ It's also worth noting that the RP2040 timer system provides multiple alarm (com
 
 This example [hello_timer.c](https://github.com/raspberrypi/pico-examples/blob/master/timer/hello_timer/hello_timer.c) illustrates how to configure a single-shot and a periodic-based timer that is used to trigger an interrupt. This interrupt will then trigger a function to perform the user-defined code. Changing the `delay_ms` parameter in the `add_repeating_timer_ms` API call can trigger different behaviours. Observe the starting time at each call.
 
+The image below illustrates two different configurations for the periodic timer used in the sample code above.
+<img src="img/periodic.png" width=50% height=50%>
+
 ## **HOW DOES THE ULTRASONIC HC-SR04P WORK**
 
 <img src="img/ultrasonic.png" width=50% height=50%>
