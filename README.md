@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/fd8935a9-1dc8-40c6-b5b1-d8f7ba1f6254)# LAB 3: Interrupts & Timers
+# LAB 3: Interrupts & Timers
 
 **OBJECTIVES**
 -	Learn the difference between polling and interrupts
