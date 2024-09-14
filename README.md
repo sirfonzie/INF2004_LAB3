@@ -103,6 +103,8 @@ The image below illustrates two different configurations for the periodic timer 
 
 The following [example](https://github.com/KleistRobotics/Pico-Ultrasonic/blob/main/ultrasonic/ultrasonic.c) uses simple GPIO and delays to achieve the trigger and echo calculation to obtain the distance. However, this code is **incomplete** and might contain syntax errors. Moreover, it is **inefficient** due to the use of block-waiting, which can lead to unresponsive behavior (lines #26 & #28).
 
+> [NOTE]: HC-SR04P and HC-SR04+ both supports 3.3V microcontroller such as Pi Pico and ESP32. However, HC-SR04 is a 5V based sensor and can only be used on an Arduino Uno and **NOT** on a Pi Pico and ESP32.
+
 ## **EXERCISE**
 
 The objective is to develop a simple stopwatch application. The stopwatch will be controlled by a single button on **GP21**. **Pressing and holding** this button starts the timer, and the elapsed time in seconds will be continuously displayed on the Serial Monitor. **Releasing** the button stops the timer and resets the displayed time to zero. To ensure a smooth user experience and accurate timekeeping, the **GP21** button input will be **debounced**, and **timer interrupts** must be employed.
