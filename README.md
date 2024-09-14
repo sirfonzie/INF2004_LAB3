@@ -51,7 +51,7 @@ To test the code, you must connect the GP02 pin to 3.3V while observing the outp
 
 The working principle of the encoder (shown above) is illustrated in the image below. It uses a slotted wheel with a single LED and photodetector pair that generate pulses as the wheel turns, and the speed of an object can be calculated by measuring the pulse duration Δti  (i.e. elapsed time or period of a pulse) between successive pulses. It comprises three connections: GND, VCC and OUT. GND and VCC supply power to the module (in our case, via the Pico's GND and 3.3V pins), while OUT generates the square-pulse signal. Connecting the GP02 from the Pico to the OUT of the IR-Sensor will allow the Pico to detect when the wheel is turning.
 
-<img src="img/encoder.png" width=50% height=50%>
+<img src="img/encoder.PNG" width=50% height=50%>
 
 
 You may now change the callback function to convert this code into the wheel encoder driver. To measure distance, count each time the notch has been detected (Hint: Use edge-triggered). To measure speed, you will need to measure the pulse width.
