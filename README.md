@@ -4,7 +4,7 @@
 -	Learn the difference between polling and interrupts
 -	Configure and implement hardware Interrupts
 -	Configure and implement various Timer
--	Understand how to configure the IR-based Wheel Encoder sensor & HC-SR04P Ultrasonic sensor
+-	Understand how to configure the HC020K IR Wheel Encoder & HCSR04P Ultrasonic sensor
 
 
 **EQUIPMENT** 
