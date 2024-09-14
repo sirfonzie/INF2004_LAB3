@@ -100,7 +100,7 @@ The image below illustrates two different configurations for the periodic timer 
 
 ## **SAMPLE CODE FOR ULTRASONIC HC-SR04P**
 
-The following [example](https://github.com/KleistRobotics/Pico-Ultrasonic/blob/main/ultrasonic/ultrasonic.c) uses simple GPIO and delays to achieve the trigger and echo calculation to obtain the distance. However, this code is inefficient due to the use of block-waiting (lines #26 & #28). 
+The following [example](https://github.com/KleistRobotics/Pico-Ultrasonic/blob/main/ultrasonic/ultrasonic.c) uses simple GPIO and delays to achieve the trigger and echo calculation to obtain the distance. However, this code is **incomplete** and **inefficient** due to the use of block-waiting (lines #26 & #28). 
 
 
 ## **EXERCISE**
