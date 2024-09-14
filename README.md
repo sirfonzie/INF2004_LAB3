@@ -96,7 +96,7 @@ The image below illustrates two different configurations for the periodic timer 
 3. **Reflection and Reception**: If an object is present within the sensor's detection range, the emitted ultrasonic waves will bounce off that object's surface and reflect toward the module. The module's ultrasonic receiver, or the "Echo" pin, detects these reflected sound waves. The duration for which the "Echo" pin stays high is directly proportional to the time it takes for the emitted ultrasonic waves to hit an object and return.
 4. **Distance Derivation**: The time measured from the emission of the ultrasonic pulse to its reception (the round trip) can be used to derive the distance to the object. Given that, we know the speed of sound in air (approximately 343 meters per second or 1125.33 feet per second at room temperature), the formula to calculate this distance is: <img src="img/distance.png" width=25% height=25%> The division by two accounts for the round trip of the sound waves; we need the time for just one way to determine the distance to the object.
 
-<img src="img/connectultrasonic.png" width=70% height=70%>
+<img src="img/hcsr04pico.png" width=70% height=70%>
 
 ## **SAMPLE CODE FOR ULTRASONIC HC-SR04P**
 
