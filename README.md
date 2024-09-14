@@ -47,7 +47,7 @@ To test the code, you must connect the GP02 pin to 3.3V while observing the outp
 
 ## **IR-BASED WHEEL ENCODER**
 
-<img src="img/irwheelencoder.PNG" width=50% height=50%>
+<img src="img/irwheelencoder.PNG" width=30% height=30%>
 
 The working principle of the encoder (shown above) is illustrated in the image below. It uses a slotted wheel with a single LED and photodetector pair that generate pulses as the wheel turns, and the speed of an object can be calculated by measuring the pulse duration Δti  (i.e. elapsed time or period of a pulse) between successive pulses. It comprises three connections: GND, VCC and OUT. GND and VCC supply power to the module (in our case, via the Pico's GND and 3.3V pins), while OUT generates the square-pulse signal. Connecting the GP02 from the Pico to the OUT of the IR-Sensor will allow the Pico to detect when the wheel is turning.
 
