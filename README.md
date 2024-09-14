@@ -40,7 +40,7 @@ A dedicated or grouped interrupt is triggered, depending on the source of the in
 
 We will be exploring the [hello_gpio_irq.c](https://github.com/raspberrypi/pico-examples/blob/master/gpio/hello_gpio_irq/hello_gpio_irq.c) sample code designed for the Pico W. In this session, we'll merge our knowledge of GPIO with the concept of interrupts. Instead of the previous lab's approach, where we continuously polled the GPIO pin status using the `while(true)` statement, we'll now integrate interrupts. This will allow us to trigger the interrupts based on the desired state, whether edge-triggered or level-triggered. In this example, edge-triggered has been chosen. How would you change it to level-triggered? 
 
-To test the code, you must connect the GP02 pin to 3.3V while observing the output on the Serial Monitor. In the [CMakeLists.txt](https://github.com/raspberrypi/pico-examples/blob/master/gpio/hello_gpio_irq/CMakeLists.txt), __ensure__ that the following line has been added `pico_enable_stdio_usb(hello_gpio_irq 1)`.
+To test the code, you must connect the GP02 pin to 3.3V while observing the output on the Serial Monitor. In the [CMakeLists.txt](https://github.com/raspberrypi/pico-examples/blob/master/gpio/hello_gpio_irq/CMakeLists.txt), __ensure__ that the following line has been added `pico_enable_stdio_usb(hello_gpio_irq 1)`. In addition, 'stdio_init_all()' should also be included in your main() function.
 
 > [NOTE]
 > Switching to trigger at a low-level (GPIO_IRQ_LEVEL_LOW) could lead to the software crashing (not working). Why?
